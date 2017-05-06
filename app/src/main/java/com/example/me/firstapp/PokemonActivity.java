@@ -1,9 +1,14 @@
 package com.example.me.firstapp;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PokemonActivity extends AppCompatActivity {
 
@@ -15,18 +20,35 @@ public class PokemonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pokemon);
 
         int pokeNo = (int) getIntent().getExtras().get(PokemonActivity.EXTRA_POKENO);
-        Pokemon pokemon = Pokemon.pokemons[pokeNo];
 
-        ImageView img = (ImageView) findViewById(R.id.pokeImg);
-        img.setImageResource(pokemon.getImageId());
-        img.setContentDescription(pokemon.getName());
-        img.getLayoutParams().height = 250;
-        img.requestLayout();
+        try {
+            SQLiteOpenHelper pokemonDatabaseHelper = new PokemonDatabaseHelper(this);
+            SQLiteDatabase db = pokemonDatabaseHelper.getReadableDatabase();
+            Cursor cursor = db.query("POKEMON", new String[] { "_id", "name", "type", "imgId" }, "_id = ?", new String[] {Integer.toString(pokeNo)}, null, null, null);
+            if(cursor.moveToFirst()) {
+                int _id = cursor.getInt(0);
+                String nameText = cursor.getString(1);
+                String typeText = cursor.getString(2);
+                int imgId = cursor.getInt(3);
 
-        TextView name = (TextView) findViewById(R.id.pokename);
-        name.setText(pokemon.getId() + " " + pokemon.getName());
+                ImageView img = (ImageView) findViewById(R.id.pokeImg);
+                img.setImageResource(imgId);
+                img.setContentDescription(nameText);
+                img.getLayoutParams().height = 250;
+                img.requestLayout();
 
-        TextView type = (TextView) findViewById(R.id.poketype);
-        type.setText(pokemon.getType());
+                TextView name = (TextView) findViewById(R.id.pokename);
+                name.setText(Helpers.leadingZeroes(_id) + " " + Helpers.capitalize(nameText));
+
+                TextView type = (TextView) findViewById(R.id.poketype);
+                type.setText("Type: " + Helpers.capitalize(typeText));
+            }
+            cursor.close();
+            db.close();
+        } catch(SQLiteException e) {
+            Toast toast = Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
     }
 }
