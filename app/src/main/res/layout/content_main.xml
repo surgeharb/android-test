@@ -17,19 +17,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Heads"
-        android:ems="10"
-        android:id="@+id/choice1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="44dp"
-        android:width="150dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:text="Tails"
         android:ems="10"
         android:id="@+id/choice2"
@@ -40,34 +27,6 @@
         android:width="150dp" />
 
     <Button
-        android:text="ROLL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="57dp"
-        android:id="@+id/roll"
-        android:layout_below="@+id/choice1"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:text="!!!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/result"
-        android:layout_marginTop="47dp"
-        android:layout_below="@+id/roll"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
-        android:id="@+id/send"
-        android:layout_below="@+id/result"
-        android:layout_alignLeft="@+id/roll"
-        android:layout_alignStart="@+id/roll" />
-
-    <Button
         android:text="timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,5 +35,56 @@
         android:layout_alignEnd="@+id/send"
         android:layout_marginTop="19dp"
         android:id="@+id/timer" />
+
+    <Button
+        android:text="Pokedex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timer"
+        android:layout_alignRight="@+id/timer"
+        android:layout_alignEnd="@+id/timer"
+        android:layout_marginTop="19dp"
+        android:id="@+id/pokedex" />
+
+    <Button
+        android:text="Send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/send"
+        android:layout_below="@+id/result"
+        android:layout_alignLeft="@+id/roll"
+        android:layout_alignStart="@+id/roll"
+        android:layout_marginTop="21dp" />
+
+    <TextView
+        android:text="!!!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/result"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/roll"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Heads"
+        android:ems="10"
+        android:id="@+id/choice1"
+        android:layout_marginTop="35dp"
+        android:width="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="ROLL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/roll"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/choice2"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

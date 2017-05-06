@@ -24,7 +24,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TimerActivity"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".Pokedex" />
+        <activity android:name=".PokemonActivity"></activity>
     </application>
 
 </manifest>

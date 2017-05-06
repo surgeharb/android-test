@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText choice1, choice2;
     String choice;
-    Button roll, send, timerBtn;
+    Button roll, send, timerBtn, pokedex;
     TextView result;
 
     @Override
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         choice2 = (EditText) findViewById(R.id.choice2);
         result = (TextView) findViewById(R.id.result);
         roll = (Button) findViewById(R.id.roll);
+        pokedex = (Button) findViewById(R.id.pokedex);
 
         roll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +74,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, TimerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        pokedex.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Pokedex.class);
                 startActivity(intent);
             }
         });
