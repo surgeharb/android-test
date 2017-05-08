@@ -25,8 +25,16 @@
         <activity
             android:name=".TimerActivity"
             android:configChanges="orientation|screenSize" />
-        <activity android:name=".Pokedex" />
-        <activity android:name=".PokemonActivity"></activity>
+        <activity
+            android:name=".Pokedex"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PokemonActivity"
+            android:parentActivityName=".Pokedex">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Pokedex" />
+        </activity>
     </application>
 
 </manifest>

@@ -33,10 +33,6 @@ public class Pokemon {
         return Helpers.capitalize(this.type);
     }
 
-    public int getImageId() {
-        return this.imgId;
-    }
-
     public String toString() {
         return Helpers.leadingZeroes(this.id) + Helpers.capitalize(this.name) + " of type " + this.type;
     }

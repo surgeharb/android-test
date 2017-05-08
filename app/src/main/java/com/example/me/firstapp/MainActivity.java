@@ -3,10 +3,11 @@ package com.example.me.firstapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,26 @@ public class MainActivity extends AppCompatActivity {
     TextView result;
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.action_view_pokedex:
+                Intent intent = new Intent(this, Pokedex.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_settings:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -37,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         choice2 = (EditText) findViewById(R.id.choice2);
         result = (TextView) findViewById(R.id.result);
         roll = (Button) findViewById(R.id.roll);
-        pokedex = (Button) findViewById(R.id.pokedex);
 
         roll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,14 +98,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        pokedex.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, Pokedex.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     public void roll() {
@@ -107,22 +119,6 @@ public class MainActivity extends AppCompatActivity {
         result.setText(choice);
         Toast.makeText(this, "You have got " + choice + "!", Toast.LENGTH_LONG).show();
     }
-
-//    void timer() {
-//
-//        new CountDownTimer(2000, 1000) {
-//
-//            public void onTick ( long millisUntilFinished){
-//                result.setText("" + millisUntilFinished / 1000);
-//            }
-//
-//            public void onFinish() {
-//                roll();
-//            }
-//
-//        }.start();
-//
-//    }
 
     void gotoNext() {
         Intent intent = new Intent(this, Result.class);
