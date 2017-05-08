@@ -4,7 +4,12 @@
     <string name="title_activity_result">Result</string>
     <string name="chooser">Send message...</string>
     <string name="clickme">ClickMe</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string-array name="menu">
+        <item>Pokedex</item>
+        <item>Timer</item>
+        <item>Exit</item>
+    </string-array>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
