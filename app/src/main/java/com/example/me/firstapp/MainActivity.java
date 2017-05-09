@@ -6,14 +6,16 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +32,7 @@ public class MainActivity extends ActionBarActivity {
     DrawerLayout mDrawerLayout;
     EditText choice1, choice2;
     String choice;
+    Context context;
     Button roll, send, timerBtn;
     TextView result;
 
@@ -65,7 +68,7 @@ public class MainActivity extends ActionBarActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final Context context = this;
+        context = this;
 
         timerBtn = (Button) findViewById(R.id.timer);
         choice1 = (EditText) findViewById(R.id.choice1);
@@ -121,8 +124,6 @@ public class MainActivity extends ActionBarActivity {
         ListView drawerList = (ListView) findViewById(R.id.drawer);
         drawerList.setAdapter(adapter);
 
-
-
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
 
@@ -145,6 +146,38 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        drawerList.setOnItemClickListener(new DrawerItemClickListener());
+
+    }
+
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            //Code to run when the item gets clicked
+            selectItem(position);
+        }
+
+        private void selectItem(int position) {
+            Fragment fragment;
+            switch(position) {
+                case 0:
+                    Intent pokedexActivity = new Intent(context, Pokedex.class);
+                    startActivity(pokedexActivity);
+                    break;
+                case 1:
+                    Intent timerIntent = new Intent(context, TimerActivity.class);
+                    startActivity(timerIntent);
+                    break;
+                case 2:
+                    Intent exitIntent = new Intent(Intent.ACTION_MAIN);
+                    exitIntent.addCategory(Intent.CATEGORY_HOME);
+                    exitIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(exitIntent);
+                    break;
+                default:
+
+            }
+        }
     }
 
     @Override

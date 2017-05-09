@@ -49,6 +49,8 @@ public class TimerActivity extends AppCompatActivity {
                 reset();
             }
         });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void start() {
