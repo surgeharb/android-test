@@ -1,0 +1,15 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/framelayout"
+    tools:context="com.example.me.firstapp.MainFragment">
+
+    <Button
+        android:id="@+id/framebutton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="click me"
+        android:onClick="clickit" />
+
+</FrameLayout>

@@ -14,11 +14,14 @@
         android:layout_marginTop="55dp"
         android:fitsSystemWindows="true">
 
-        <include layout="@layout/content_main" />
-
         <FrameLayout
+            android:id="@+id/frame_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <include layout="@layout/content_main" />
+
+        </FrameLayout>
 
         <ListView
             android:id="@+id/drawer"
